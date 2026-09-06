@@ -16,20 +16,20 @@ export const Home: React.FC = () => {
   const featuredProducts = PRODUCTS.slice(0, 8);
 
   return (
-    <div className="space-y-0 bg-[#090D16] text-[#F8FAFC]">
+    <div className="space-y-0 bg-[#F4F7F2] text-[#1E2B1D]">
       {/* 1. Hero Image Slider */}
       <HeroSlider />
 
-      {/* 2. Explore Categories (7 accurate categories) */}
+      {/* 2. Explore Categories */}
       <section className="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <p className="text-[11px] uppercase tracking-wider text-amber-400 font-extrabold mb-1.5">
+          <p className="text-[11px] uppercase tracking-wider text-[#385934] font-extrabold mb-1.5">
             Shop by Category
           </p>
-          <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl text-white font-extrabold tracking-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1E2B1D] font-extrabold tracking-tight">
             All Types of Bottles, One Place
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-2">
+          <p className="text-xs sm:text-sm text-[#586956] mt-2">
             Find the right packaging and closures for your formulation and brand.
           </p>
         </div>
@@ -45,10 +45,10 @@ export const Home: React.FC = () => {
         <div className="mt-8 sm:mt-10 text-center">
           <Link
             to="/shop"
-            className="inline-flex items-center gap-2 bg-[#111827] hover:bg-slate-800 text-amber-400 border border-amber-500/30 text-xs sm:text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-md shadow-black/30 hover:border-amber-500/60"
+            className="inline-flex items-center gap-2 bg-white hover:bg-[#EAF1E8] text-[#1E2B1D] border border-[#D7E3D4] text-xs sm:text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-sm hover:border-[#5C8358]/60"
           >
             <span>View All Categories</span>
-            <ArrowRight className="w-4 h-4 text-amber-400" />
+            <ArrowRight className="w-4 h-4 text-[#5C8358]" />
           </Link>
         </div>
       </section>
@@ -60,24 +60,24 @@ export const Home: React.FC = () => {
       <section className="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-[11px] uppercase tracking-wider text-amber-400 font-extrabold mb-2">
-              <Sparkles className="w-3 h-3 text-amber-400" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5EFE3] border border-[#C3D9BF] text-[11px] uppercase tracking-wider text-[#385934] font-extrabold mb-2">
+              <Sparkles className="w-3 h-3 text-[#5C8358]" />
               <span>Selected Packaging</span>
             </div>
-            <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl text-white font-extrabold tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1E2B1D] font-extrabold tracking-tight">
               Featured Packaging Stock
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-[#586956] mt-1">
               Popular bottles and jars ready for bulk wholesale orders and custom branding.
             </p>
           </div>
 
           <Link
             to="/shop"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#5C8358] hover:text-[#385934] transition-colors shrink-0"
           >
             <span>Browse Full Catalogue</span>
-            <ArrowRight className="w-4 h-4 text-amber-400" />
+            <ArrowRight className="w-4 h-4 text-[#5C8358]" />
           </Link>
         </div>
 
@@ -89,17 +89,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 5. Industries We Serve */}
-      <section className="py-12 sm:py-16 bg-[#0B0F19] border-y border-slate-800">
+      <section className="py-12 sm:py-16 bg-[#EAF1E8]/70 border-y border-[#D7E3D4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-end mb-8 sm:mb-12">
             <div className="lg:col-span-8">
-              <p className="text-[11px] uppercase tracking-wider text-amber-400 font-extrabold mb-1.5">
+              <p className="text-[11px] uppercase tracking-wider text-[#385934] font-extrabold mb-1.5">
                 Packaging for Every Industry
               </p>
-              <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl text-white font-extrabold tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1E2B1D] font-extrabold tracking-tight">
                 Trusted by Businesses Across Pakistan
               </h2>
-              <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-xl">
+              <p className="text-xs sm:text-sm text-[#586956] mt-2 max-w-xl">
                 We supply packaging solutions tailored to industry-specific handling, filling lines, and barrier requirements across the country.
               </p>
             </div>
@@ -107,10 +107,10 @@ export const Home: React.FC = () => {
             <div className="lg:col-span-4 lg:text-right">
               <Link
                 to="/industries"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-extrabold px-5 py-3 rounded-xl transition-all shadow-md shadow-amber-500/20 active:scale-[0.98]"
+                className="inline-flex items-center gap-2 bg-[#5C8358] hover:bg-[#4F724B] text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl transition-all shadow-md shadow-[#5C8358]/20 active:scale-[0.98]"
               >
                 <span>Explore Industries</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
             </div>
           </div>

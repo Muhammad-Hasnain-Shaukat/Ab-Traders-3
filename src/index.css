@@ -1,59 +1,114 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian: #090D16;
-  --color-obsidian-surface: #0E1424;
-  --color-obsidian-card: #131B2E;
-  --color-obsidian-border: #1E293B;
+  --color-ivory: #F4F7F2;
+  --color-ivory-50: #FFFFFF;
+  --color-ivory-100: #F4F7F2;
+  --color-ivory-200: #EAF1E8;
+  --color-ivory-300: #D7E3D4;
+  
+  --color-beige: #EAF1E8;
+  --color-beige-light: #F4F7F2;
+  --color-beige-dark: #D7E3D4;
 
-  --color-gold: #F59E0B;
-  --color-gold-light: #FDE68A;
-  --color-gold-dark: #D97706;
-  --color-gold-accent: #B45309;
+  --color-taupe: #586956;
+  --color-taupe-light: #7A8C78;
+  --color-taupe-dark: #385934;
 
-  --color-ivory: #090D16;
-  --color-beige: #1E293B;
-  --color-charcoal: #F8FAFC;
-  --color-charcoal-700: #CBD5E1;
-  --color-charcoal-600: #94A3B8;
-  --color-charcoal-400: #64748B;
+  /* Fresh Organic Pistachio Palette */
+  --color-pistachio: #5C8358;
+  --color-pistachio-50: #F4F7F2;
+  --color-pistachio-100: #EAF1E8;
+  --color-pistachio-200: #D7E5D4;
+  --color-pistachio-300: #BDD4B9;
+  --color-pistachio-400: #8FB888;
+  --color-pistachio-500: #5C8358;
+  --color-pistachio-600: #4F724B;
+  --color-pistachio-700: #385934;
+  --color-pistachio-800: #2E442B;
+  --color-pistachio-900: #1E2D1D;
+
+  /* Map gold classes to pistachio brand green for instant, seamless harmony */
+  --color-gold: #5C8358;
+  --color-gold-light: #8FB888;
+  --color-gold-dark: #385934;
+  --color-gold-muted: #BDD4B9;
+
+  --color-charcoal: #1E2B1D;
+  --color-charcoal-50: #F9FAF8;
+  --color-charcoal-100: #F4F7F2;
+  --color-charcoal-200: #EAF1E8;
+  --color-charcoal-300: #D7E3D4;
+  --color-charcoal-400: #7A8C78;
+  --color-charcoal-500: #586956;
+  --color-charcoal-600: #3D4D3B;
+  --color-charcoal-700: #2E3E2C;
+  --color-charcoal-800: #1E2B1D;
+  --color-charcoal-900: #141E13;
+
+  --color-deepbrown: #182317;
 
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
-
-  --shadow-gold: 0 4px 20px -2px rgba(245, 158, 11, 0.15), 0 2px 6px -1px rgba(245, 158, 11, 0.08);
-  --shadow-gold-hover: 0 10px 30px -4px rgba(245, 158, 11, 0.25), 0 4px 10px -2px rgba(245, 158, 11, 0.12);
+  
+  --shadow-soft: 0 4px 20px -2px rgba(46, 68, 43, 0.06), 0 2px 6px -1px rgba(46, 68, 43, 0.03);
+  --shadow-soft-hover: 0 16px 36px -4px rgba(46, 68, 43, 0.14), 0 6px 16px -2px rgba(46, 68, 43, 0.05);
 }
 
 :root {
-  --color-obsidian: #090D16;
-  --color-gold: #F59E0B;
-  --color-gold-dark: #D97706;
+  --vh: 1vh;
+  --color-ivory: #F4F7F2;
+  --color-beige: #EAF1E8;
+  --color-taupe: #586956;
+  --color-gold: #5C8358;
+  --color-pistachio: #5C8358;
+  --color-charcoal: #1E2B1D;
+  --color-deepbrown: #182317;
 }
 
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
-  background-color: #090D16;
 }
 
 body {
-  background-color: #090D16;
-  color: #F8FAFC;
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  background-color: #F4F7F2;
+  color: #1E2B1D;
   overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Custom Asymmetric Diagonal Sculptured Frame */
-.frame-sculptured {
-  border-radius: 14px 42px 14px 42px;
+/* Custom modern pistachio scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.frame-sculptured-inner {
-  border-radius: 12px 38px 12px 38px;
+::-webkit-scrollbar-track {
+  background: #F4F7F2;
 }
 
-/* Mobile Safe Bottom Spacing */
+::-webkit-scrollbar-thumb {
+  background: #D7E3D4;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5C8358;
+}
+
+/* Focus styling */
+:focus-visible {
+  outline: 2px solid #5C8358;
+  outline-offset: 2px;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
 .safe-bottom {
-  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tracking-luxury {
+  letter-spacing: 0.12em;
 }

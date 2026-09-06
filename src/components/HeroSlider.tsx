@@ -19,42 +19,42 @@ interface Slide {
 const SLIDES: Slide[] = [
   {
     id: 1,
-    tag: 'PREMIUM PACKAGING SOLUTIONS',
-    headline: 'Packaging, refined.',
-    supporting: 'Premium bottles. Custom branding. Sourced with direct wholesale consistency across Pakistan.',
+    tag: 'PREMIUM BOTANICAL PACKAGING',
+    headline: 'Purity in every drop.',
+    supporting: 'Aesthetic golden lotion pumps, treatment dispensers, and serum droppers tailored for premium skincare lines across Pakistan.',
     primaryBtnText: 'Explore Bottles',
     primaryBtnLink: '/shop',
     secondaryBtnText: 'Get Bulk Quote',
     secondaryBtnLink: '/quote',
     desktopImage: '/images/hero/hero-slide-1-desktop.jpg',
     mobileImage: '/images/hero/hero-slide-1-mobile.jpg',
-    alt: 'AB TRADERS premium amber, clear and matte white packaging bottles arranged on natural travertine stone pedestal with soft botanical shadows',
+    alt: 'Aesthetic translucent golden lotion dispenser and serum dropper bottle on soft textured surface with dried botanicals',
   },
   {
     id: 2,
-    tag: 'LUXURY COSMETIC CONTAINERS',
-    headline: 'Made for your brand.',
-    supporting: 'Bottles, jars, and finishing touches engineered for high-performance skincare and cosmetic brands.',
-    primaryBtnText: 'Explore Cosmetic Packaging',
+    tag: 'LUXURY COSMETIC GLASSWARE',
+    headline: 'Formulated for prestige.',
+    supporting: 'Royal violet cosmetic bottles, treatment pumps, droppers, and luxury cream jars for standout beauty and cosmetic brands.',
+    primaryBtnText: 'Cosmetic Packaging',
     primaryBtnLink: '/shop?category=cosmetic-packaging',
     secondaryBtnText: 'Custom Branding',
     secondaryBtnLink: '/custom-branding',
     desktopImage: '/images/hero/hero-slide-2-desktop.jpg',
     mobileImage: '/images/hero/hero-slide-2-mobile.jpg',
-    alt: 'Curated collection of frosted droppers, white lotion pumps and luxury gold-accented cosmetic jars',
+    alt: 'Exclusive royal violet cosmetic glass bottles, treatment droppers, and jars arranged elegantly on soft pistachio background',
   },
   {
     id: 3,
-    tag: 'WHOLESALE & COMMERCIAL SUPPLY',
-    headline: 'Built for your business.',
-    supporting: 'Packaging for everyday scale. Reliable PET, HDPE, and glass solutions for growing enterprises.',
+    tag: 'MINIMALIST ZEN GLASS',
+    headline: 'Crafted with balance.',
+    supporting: 'Frosted glass dropper bottles and dispenser flasks resting on organic river stones. Durable, refined wholesale supply.',
     primaryBtnText: 'Request a Bulk Quote',
     primaryBtnLink: '/quote',
     secondaryBtnText: 'View All Products',
     secondaryBtnLink: '/shop',
     desktopImage: '/images/hero/hero-slide-3-desktop.jpg',
     mobileImage: '/images/hero/hero-slide-3-mobile.jpg',
-    alt: 'Collection of clear and amber glass and plastic bottles on natural stone surface',
+    alt: 'Frosted glass dropper bottles and treatment flasks arranged on smooth natural river stones',
   },
 ];
 
@@ -80,6 +80,23 @@ export const HeroSlider: React.FC = () => {
     };
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Screen auto-adjuster: dynamically calculate 100% viewport height across mobile browsers
+  useEffect(() => {
+    const updateViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    updateViewportHeight();
+    window.addEventListener('resize', updateViewportHeight);
+    window.addEventListener('orientationchange', updateViewportHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateViewportHeight);
+      window.removeEventListener('orientationchange', updateViewportHeight);
+    };
   }, []);
 
   const nextSlide = useCallback(() => {
@@ -141,7 +158,7 @@ export const HeroSlider: React.FC = () => {
   return (
     <section
       ref={sliderRef}
-      className="relative w-full bg-[#090D16] overflow-hidden"
+      className="relative w-full bg-[#F4F7F2] overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
@@ -151,30 +168,36 @@ export const HeroSlider: React.FC = () => {
       aria-label="Hero Packaging Highlights"
     >
       {/* ========================================================================= */}
-      {/* MOBILE LAYOUT (< md): Step 1 - First Item Only (Header & Text Group)      */}
+      {/* MOBILE LAYOUT (< md): Auto-adjusting hero for complete first-view fit     */}
       {/* ========================================================================= */}
-      <div className="md:hidden flex flex-col mt-12 pt-4 pb-4 px-4">
-        {/* 1. Header & Text Group with equal balanced spacing between all items */}
-        <div className="space-y-3.5">
-          {/* Section Badge (First item) */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-[10px] uppercase tracking-wider text-amber-400 font-extrabold shadow-2xs">
-            <span className="text-amber-400">●</span>
+      <div
+        className="md:hidden flex flex-col justify-between px-4 sm:px-6 pt-13 sm:pt-14 pb-2 sm:pb-3 w-full min-h-[480px] h-[100svh] max-h-[100svh]"
+        style={{
+          height: 'calc(var(--vh, 1vh) * 100)',
+          maxHeight: 'calc(var(--vh, 1vh) * 100)',
+        }}
+      >
+        {/* 1. Header & Text Group (Always completely visible at top) */}
+        <div className="shrink-0 space-y-1.5 sm:space-y-2">
+          {/* Section Badge */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5EFE3] border border-[#C3D9BF] text-[10px] uppercase tracking-wider text-[#385934] font-bold shadow-2xs">
+            <span className="text-[#5C8358]">●</span>
             <span>{activeSlide.tag}</span>
           </div>
 
-          {/* Headline (Second item) */}
-          <h1 className="font-sans text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-[1.14]">
+          {/* Headline */}
+          <h1 className="font-sans text-2xl sm:text-3xl font-extrabold text-[#1E2B1D] tracking-tight leading-[1.12]">
             {activeSlide.headline}
           </h1>
 
-          {/* Supporting line (Third item) */}
-          <p className="text-xs text-slate-300 font-normal leading-relaxed line-clamp-2">
+          {/* Supporting line */}
+          <p className="text-xs text-[#586956] font-normal leading-relaxed line-clamp-2">
             {activeSlide.supporting}
           </p>
         </div>
 
-        {/* 2. Photography Frame (Item 2) - balanced height */}
-        <div className="relative w-full h-[570px] xs:h-[610px] sm:h-[650px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-md shadow-black/50 mt-4.5">
+        {/* 2. Photography Frame - Flexibly auto-adjusts to fill remaining screen height */}
+        <div className="flex-1 min-h-[180px] relative w-full rounded-2xl overflow-hidden bg-[#EAF1E8] border border-[#D7E3D4] shadow-sm my-2 sm:my-2.5">
           {SLIDES.map((slide, index) => {
             const isActive = index === currentSlide;
             return (
@@ -198,20 +221,20 @@ export const HeroSlider: React.FC = () => {
           })}
         </div>
 
-        {/* 3. Actions (Item 3) - Sleek compact mobile button size */}
-        <div className="grid grid-cols-2 gap-2.5 mt-4">
+        {/* 3. Actions - Two buttons always anchored comfortably on first view */}
+        <div className="shrink-0 grid grid-cols-2 gap-2.5 sm:gap-3 pb-0.5">
           <Link
             to={activeSlide.primaryBtnLink}
-            className="inline-flex items-center justify-center gap-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[11px] font-black py-2 px-2.5 rounded-lg tracking-normal shadow-sm shadow-amber-500/20 active:scale-[0.98] text-center leading-tight"
+            className="inline-flex items-center justify-center gap-1.5 bg-[#5C8358] hover:bg-[#4F724B] text-white text-xs font-bold py-2.5 sm:py-3 px-2.5 rounded-lg tracking-normal shadow-xs active:scale-[0.98] text-center leading-tight shadow-[#5C8358]/20"
           >
             <span>{activeSlide.primaryBtnText}</span>
-            <ArrowRight className="w-3 h-3 text-slate-950 shrink-0" />
+            <ArrowRight className="w-3.5 h-3.5 text-white shrink-0" />
           </Link>
 
           {activeSlide.secondaryBtnText && (
             <Link
               to={activeSlide.secondaryBtnLink || '/quote'}
-              className="inline-flex items-center justify-center bg-slate-800/90 hover:bg-slate-750 text-amber-300 border border-slate-700 text-[11px] font-bold py-2 px-2.5 rounded-lg tracking-normal shadow-2xs text-center leading-tight active:scale-[0.98]"
+              className="inline-flex items-center justify-center bg-white hover:bg-[#F4F7F2] text-[#1E2B1D] border border-[#D7E3D4] text-xs font-bold py-2.5 sm:py-3 px-2.5 rounded-lg tracking-normal shadow-2xs text-center leading-tight active:scale-[0.98]"
             >
               <span>{activeSlide.secondaryBtnText}</span>
             </Link>
@@ -220,7 +243,7 @@ export const HeroSlider: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* DESKTOP LAYOUT (md: and up): Side-by-side with stone pedestal on right     */}
+      {/* DESKTOP LAYOUT (md: and up): Side-by-side with bottles on right           */}
       {/* ========================================================================= */}
       <div className="hidden md:flex relative min-h-[600px] lg:min-h-[680px] items-center pt-14 pb-12 lg:pt-16 lg:pb-14">
         {/* Background photographic slides */}
@@ -241,14 +264,14 @@ export const HeroSlider: React.FC = () => {
                   loading={index === 0 ? 'eager' : 'lazy'}
                   className="w-full h-full object-cover object-right"
                 />
-                {/* Obsidian dark ambient gradient for crisp white text legibility */}
-                <div className="absolute inset-0 w-3/5 pointer-events-none bg-gradient-to-r from-[#090D16] via-[#090D16]/90 to-transparent" />
+                {/* Clean pistachio ambient lighting overlay for high legibility on text side */}
+                <div className="absolute inset-0 w-3/5 pointer-events-none bg-gradient-to-r from-[#F4F7F2] via-[#F4F7F2]/90 to-transparent" />
               </div>
             );
           })}
         </div>
 
-        {/* Foreground Desktop Live HTML Content - Original tight spacing, no added space */}
+        {/* Foreground Desktop Live HTML Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <div className="max-w-xl lg:max-w-2xl -translate-y-5 lg:-translate-y-7">
             {SLIDES.map((slide, index) => {
@@ -264,18 +287,18 @@ export const HeroSlider: React.FC = () => {
                   aria-label={`Slide ${index + 1} of ${SLIDES.length}`}
                 >
                   {/* Uppercase section label badge */}
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] uppercase tracking-wider font-extrabold mb-5 shadow-2xs bg-amber-500/15 border border-amber-500/30 text-amber-400">
-                    <span className="text-amber-400">●</span>
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] uppercase tracking-wider font-bold mb-5 shadow-2xs bg-[#E5EFE3] border border-[#C3D9BF] text-[#385934]">
+                    <span className="text-[#5C8358]">●</span>
                     <span>{slide.tag}</span>
                   </div>
 
                   {/* Main Headline */}
-                  <h1 className="font-sans text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] mb-5 text-white">
+                  <h1 className="font-sans text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] mb-5 text-[#1E2B1D]">
                     {slide.headline}
                   </h1>
 
                   {/* Supporting description */}
-                  <p className="text-base sm:text-lg font-normal leading-relaxed max-w-lg mb-7 text-slate-300">
+                  <p className="text-base sm:text-lg font-normal leading-relaxed max-w-lg mb-7 text-[#586956]">
                     {slide.supporting}
                   </p>
 
@@ -284,17 +307,17 @@ export const HeroSlider: React.FC = () => {
                     <Link
                       to={slide.primaryBtnLink}
                       tabIndex={isActive ? 0 : -1}
-                      className="inline-flex items-center justify-center gap-2 text-sm font-black px-7 py-3.5 rounded-xl tracking-wide transition-all shadow-lg shadow-amber-500/25 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950"
+                      className="inline-flex items-center justify-center gap-2 text-sm font-black px-7 py-3.5 rounded-xl tracking-wide transition-all shadow-md shadow-[#5C8358]/25 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C8358] bg-[#5C8358] hover:bg-[#4F724B] text-white"
                     >
                       <span>{slide.primaryBtnText}</span>
-                      <ArrowRight className="w-4 h-4 text-slate-950" />
+                      <ArrowRight className="w-4 h-4 text-white" />
                     </Link>
 
                     {slide.secondaryBtnText && (
                       <Link
                         to={slide.secondaryBtnLink || '/quote'}
                         tabIndex={isActive ? 0 : -1}
-                        className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3.5 rounded-xl tracking-wide transition-all active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 bg-slate-900/80 hover:bg-slate-800 text-amber-300 border border-amber-500/30 shadow-xs"
+                        className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3.5 rounded-xl tracking-wide transition-all active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C8358] bg-white hover:bg-[#F4F7F2] text-[#1E2B1D] border border-[#D7E3D4] shadow-2xs"
                       >
                         <span>{slide.secondaryBtnText}</span>
                       </Link>
@@ -302,36 +325,36 @@ export const HeroSlider: React.FC = () => {
                   </div>
 
                   {/* 3 Quick Trust Pillars */}
-                  <div className="grid grid-cols-3 gap-3 pt-4 max-w-lg border-t border-slate-800">
+                  <div className="grid grid-cols-3 gap-3 pt-4 max-w-lg border-t border-[#D7E3D4]">
                     <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-amber-400 shrink-0" />
+                      <Award className="w-4 h-4 text-[#5C8358] shrink-0" />
                       <div>
-                        <p className="text-xs font-bold leading-tight text-white">
+                        <p className="text-xs font-bold leading-tight text-[#1E2B1D]">
                           Quality-Focused
                         </p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="text-[11px] text-[#586956]">
                           Inspected materials
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
+                      <ShieldCheck className="w-4 h-4 text-[#5C8358] shrink-0" />
                       <div>
-                        <p className="text-xs font-bold leading-tight text-white">
+                        <p className="text-xs font-bold leading-tight text-[#1E2B1D]">
                           Wholesale Direct
                         </p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="text-[11px] text-[#586956]">
                           Competitive volume rates
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Truck className="w-4 h-4 text-amber-400 shrink-0" />
+                      <Truck className="w-4 h-4 text-[#5C8358] shrink-0" />
                       <div>
-                        <p className="text-xs font-bold leading-tight text-white">
+                        <p className="text-xs font-bold leading-tight text-[#1E2B1D]">
                           Nationwide Supply
                         </p>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="text-[11px] text-[#586956]">
                           Karachi, Lahore, Islamabad
                         </p>
                       </div>

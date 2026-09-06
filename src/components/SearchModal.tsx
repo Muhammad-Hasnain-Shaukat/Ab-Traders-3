@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, X, ArrowRight, Package } from 'lucide-react';
+import { Search, X, Layers, ArrowRight } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 
 interface SearchModalProps {
@@ -15,14 +15,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      setQuery('');
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -59,96 +59,116 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4" role="dialog" aria-modal="true">
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onClick={onClose} />
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity" onClick={onClose} />
 
-      <div className="relative w-full max-w-2xl bg-[#111827] rounded-xl shadow-2xl border border-slate-800 overflow-hidden z-10 animate-scale-up">
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-[#D7E3D4] overflow-hidden z-10 animate-scale-up">
         {/* Search Input Bar */}
-        <div className="p-4 border-b border-slate-800 flex items-center gap-3">
-          <Search className="w-5 h-5 text-amber-400 shrink-0" />
+        <div className="p-4 border-b border-[#EAF1E8] flex items-center gap-3">
+          <Search className="w-5 h-5 text-[#5C8358] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search glass bottles, PET jars, pumps, capacities (e.g. 250ml)..."
-            className="w-full bg-transparent text-white placeholder-slate-500 text-sm sm:text-base focus:outline-none"
+            className="w-full bg-transparent text-[#1E2B1D] placeholder-[#586956] text-sm sm:text-base focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="p-1 text-slate-400 hover:text-white transition-colors"
-              aria-label="Clear search query"
+              className="p-1 text-[#586956] hover:text-[#1E2B1D]"
+              aria-label="Clear search"
             >
               <X className="w-4 h-4" />
             </button>
           )}
           <button
             onClick={onClose}
-            className="text-xs font-semibold text-slate-400 hover:text-white px-2 py-1 bg-slate-900 border border-slate-800 rounded"
+            className="text-xs font-semibold px-2 py-1 bg-[#F4F7F2] hover:bg-[#EAF1E8] text-[#586956] rounded-md transition-colors"
           >
             ESC
           </button>
         </div>
 
-        {/* Results Area */}
+        {/* Results Body */}
         <div className="max-h-[60vh] overflow-y-auto p-4 space-y-4">
           {query.trim() === '' ? (
             <div>
-              <p className="text-xs uppercase tracking-luxury text-slate-400 font-semibold mb-2">
-                Popular Categories
+              <p className="text-xs uppercase tracking-luxury text-[#586956] font-semibold mb-3">
+                Suggested Categories
               </p>
-              <div className="flex flex-wrap gap-2">
-                {CATEGORIES.map((cat) => (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {CATEGORIES.slice(0, 6).map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => handleSelectCategory(cat.id)}
-                    className="text-xs px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-300 hover:border-amber-500/50 hover:text-amber-400 transition-all flex items-center gap-1.5"
+                    className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D7E3D4] hover:border-[#5C8358] bg-[#F4F7F2] hover:bg-[#EAF1E8] text-left transition-all group"
                   >
-                    <span>{cat.name}</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <Layers className="w-3.5 h-3.5 text-[#5C8358]" />
+                    <span className="text-xs text-[#1E2B1D] font-medium group-hover:text-[#5C8358] truncate">
+                      {cat.name}
+                    </span>
                   </button>
                 ))}
               </div>
             </div>
           ) : filteredProducts.length > 0 ? (
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-luxury text-slate-400 font-semibold mb-1">
-                {filteredProducts.length} Packaging Solutions Found
+              <p className="text-xs text-[#586956] font-semibold mb-2">
+                Matching Packaging Products ({filteredProducts.length})
               </p>
-              {filteredProducts.map((p) => (
-                <button
-                  key={p.id}
-                  onClick={() => handleSelectProduct(p.slug)}
-                  className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900 flex items-center gap-3 transition-colors group"
+              {filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  onClick={() => handleSelectProduct(product.slug)}
+                  className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-[#F4F7F2] border border-transparent hover:border-[#D7E3D4] cursor-pointer transition-all group"
                 >
-                  <div className="w-12 h-12 rounded bg-slate-950 border border-slate-800 flex items-center justify-center p-1 shrink-0 overflow-hidden">
-                    <img src={p.images[0]} alt={p.name} className="w-full h-full object-contain" />
+                  <div className="w-12 h-12 rounded-lg bg-[#EAF1E8] p-1 shrink-0 flex items-center justify-center border border-[#D7E3D4]">
+                    <img
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="max-w-full max-h-full object-contain"
+                    />
                   </div>
+
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors truncate">
-                      {p.name}
-                    </h4>
-                    <p className="text-xs text-slate-400 flex items-center gap-2">
-                      <span>{p.categoryName}</span>
-                      <span>•</span>
-                      <span>{p.material}</span>
-                      <span>•</span>
-                      <span>MOQ: {p.moq.toLocaleString()} pcs</span>
+                    <p className="text-[10px] text-[#5C8358] uppercase font-bold tracking-wider">
+                      {product.categoryName} • {product.material}
+                    </p>
+                    <h5 className="text-xs sm:text-sm font-semibold text-[#1E2B1D] truncate group-hover:text-[#5C8358]">
+                      {product.name}
+                    </h5>
+                    <p className="text-[11px] text-[#586956] truncate">
+                      Capacities: {product.capacities.join(', ')} • MOQ: {product.moq.toLocaleString()}
                     </p>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all shrink-0" />
-                </button>
+
+                  <ArrowRight className="w-4 h-4 text-[#7A8C78] group-hover:text-[#5C8358] group-hover:translate-x-0.5 transition-all shrink-0" />
+                </div>
               ))}
             </div>
           ) : (
-            <div className="py-8 text-center space-y-2">
-              <Package className="w-8 h-8 text-slate-600 mx-auto" />
-              <p className="text-sm font-semibold text-white">No packaging found</p>
-              <p className="text-xs text-slate-400">
-                Try searching for general terms like "amber", "glass", "dropper", or "500ml".
+            <div className="text-center py-8">
+              <p className="text-sm font-medium text-[#1E2B1D]">No products found for "{query}"</p>
+              <p className="text-xs text-[#586956] mt-1">
+                Try searching for materials (Glass, PET), items (Lotion, Dropper, Jar), or capacities (100ml, 250ml).
               </p>
             </div>
           )}
+        </div>
+
+        {/* Modal Footer */}
+        <div className="p-3 bg-[#F4F7F2] border-t border-[#EAF1E8] flex items-center justify-between text-xs text-[#586956]">
+          <span>Direct enquiries: 0327-8822358</span>
+          <button
+            onClick={() => {
+              navigate('/shop');
+              onClose();
+            }}
+            className="text-[#5C8358] font-semibold hover:underline"
+          >
+            Browse Full Catalogue →
+          </button>
         </div>
       </div>
     </div>

@@ -30,54 +30,54 @@ export const CustomBranding: React.FC = () => {
     <div className="pt-24 pb-16 sm:pt-28 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-[11px] uppercase tracking-luxury text-amber-400 font-semibold mb-3">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5EFE3] border border-[#C3D9BF] text-[11px] uppercase tracking-luxury text-[#5C8358] font-semibold mb-3">
+          <Sparkles className="w-3.5 h-3.5 text-[#5C8358]" />
           <span>Tailored Packaging Finishes</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-5xl text-white font-normal tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl text-[#1E2B1D] font-normal tracking-tight">
           Your Brand. Beautifully Packaged.
         </h1>
-        <p className="text-sm sm:text-base text-slate-400 mt-3 leading-relaxed">
+        <p className="text-sm sm:text-base text-[#586956] mt-3 leading-relaxed">
           Transform stock bottles and containers into signature retail packaging with our comprehensive custom decoration, printing, and closure finishing services in Pakistan.
         </p>
       </div>
 
       {/* Main Feature Showcase */}
-      <div className="bg-[#111827] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl mb-16">
+      <div className="bg-white border border-[#D7E3D4] rounded-2xl overflow-hidden shadow-2xl mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 space-y-5">
-            <h2 className="font-serif text-2xl sm:text-3xl text-white font-normal">
+            <h2 className="font-serif text-2xl sm:text-3xl text-[#1E2B1D] font-normal">
               Direct Silk-Screen & Foil Stamping
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#586956] leading-relaxed">
               We coordinate technical printing directly with container specifications. You provide your vector artwork, and our packaging team validates bottle curvature, printable surface area, and ink compatibility.
             </p>
             <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2 text-xs text-[#586956]">
+                <CheckCircle2 className="w-4 h-4 text-[#5C8358] shrink-0" />
                 <span>Pre-production digital proofing and alignment verification</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2 text-xs text-[#586956]">
+                <CheckCircle2 className="w-4 h-4 text-[#5C8358] shrink-0" />
                 <span>Chemical & rub resistance testing before batch dispatch</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="flex items-center gap-2 text-xs text-[#586956]">
+                <CheckCircle2 className="w-4 h-4 text-[#5C8358] shrink-0" />
                 <span>Flexible minimum order quantities starting from 500 units</span>
               </div>
             </div>
             <div className="pt-4">
               <Link
                 to="/quote"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-bold px-6 py-3 rounded-md transition-all shadow-lg shadow-amber-500/20"
+                className="inline-flex items-center gap-2 bg-[#5C8358] hover:bg-[#4F724B] text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-md transition-all shadow-lg shadow-[#5C8358]/20"
               >
                 <span>Request Custom Branding Quote</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-6 h-full min-h-[300px] sm:min-h-[400px] bg-slate-900 relative overflow-hidden border-t lg:border-t-0 lg:border-l border-slate-800">
+          <div className="lg:col-span-6 h-full min-h-[300px] sm:min-h-[400px] bg-[#F4F7F2] relative overflow-hidden border-t lg:border-t-0 lg:border-l border-[#D7E3D4]">
             <picture className="w-full h-full block">
               <source media="(max-width: 640px)" srcSet="/images/hero/hero-slide-1-mobile.jpg" />
               <img
@@ -95,17 +95,17 @@ export const CustomBranding: React.FC = () => {
         {brandingOptions.map((opt, i) => (
           <div
             key={i}
-            className="bg-[#111827] border border-slate-800 rounded-xl p-6 sm:p-8 shadow-xl space-y-4"
+            className="bg-white border border-[#D7E3D4] rounded-xl p-6 sm:p-8 shadow-xl space-y-4"
           >
             <div className="flex items-center justify-between">
               <h3 className="font-serif text-lg font-semibold text-white">{opt.title}</h3>
-              <span className="text-xs font-mono font-bold text-amber-400">0{i + 1}</span>
+              <span className="text-xs font-mono font-bold text-[#5C8358]">0{i + 1}</span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{opt.desc}</p>
-            <ul className="space-y-1.5 pt-2 border-t border-slate-800">
+            <p className="text-xs sm:text-sm text-[#586956] leading-relaxed">{opt.desc}</p>
+            <ul className="space-y-1.5 pt-2 border-t border-[#D7E3D4]">
               {opt.points.map((pt, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-xs text-slate-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                <li key={idx} className="flex items-center gap-2 text-xs text-[#586956]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5C8358] shrink-0" />
                   <span>{pt}</span>
                 </li>
               ))}
@@ -115,24 +115,24 @@ export const CustomBranding: React.FC = () => {
       </div>
 
       {/* Workflow Steps */}
-      <div className="bg-[#111827] border border-slate-800 rounded-2xl p-6 sm:p-10 text-center max-w-3xl mx-auto space-y-6 shadow-2xl">
+      <div className="bg-white border border-[#D7E3D4] rounded-2xl p-6 sm:p-10 text-center max-w-3xl mx-auto space-y-6 shadow-2xl">
         <h3 className="font-serif text-2xl font-normal text-white">
           How to Initiate a Custom Branding Project
         </h3>
-        <p className="text-xs sm:text-sm text-slate-400">
+        <p className="text-xs sm:text-sm text-[#586956]">
           Select your desired bottle or jar from our catalogue, select the "Include Custom Branding" option, and attach your logo requirements or contact our design desk directly on WhatsApp.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/quote"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs sm:text-sm font-bold px-6 py-3 rounded-md shadow-lg shadow-amber-500/20"
+            className="inline-flex items-center gap-2 bg-[#5C8358] hover:bg-[#4F724B] text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-md shadow-lg shadow-[#5C8358]/20"
           >
             <span>Start Quotation</span>
-            <ArrowRight className="w-4 h-4 text-slate-950" />
+            <ArrowRight className="w-4 h-4 text-white" />
           </Link>
           <Link
             to="/shop"
-            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold px-6 py-3 rounded-md"
+            className="inline-flex items-center gap-2 bg-[#F4F7F2] hover:bg-[#EAF1E8] border border-[#D7E3D4] text-[#3D4D3B] text-xs sm:text-sm font-semibold px-6 py-3 rounded-md"
           >
             <span>Browse Compatible Bottles</span>
           </Link>

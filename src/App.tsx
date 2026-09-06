@@ -38,7 +38,7 @@ const MainLayout: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#090D16] text-[#F8FAFC]">
+    <div className="flex flex-col min-h-screen bg-ivory text-charcoal">
       <ScrollToTop />
 
       {/* Primary Header */}
